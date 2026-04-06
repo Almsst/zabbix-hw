@@ -58,3 +58,64 @@ sudo sed -i 's/max_input_time = 60/max_input_time = 300/' /etc/php/8.3/fpm/php.i
 # 9. Запуск служб
 sudo systemctl restart php8.3-fpm nginx zabbix-server zabbix-agent
 sudo systemctl enable zabbix-server zabbix-agent nginx php8.3-fpm
+
+## Задание 2. Установка Zabbix Agent на два хоста
+
+### 1. Configuration > Hosts (Узлы сети)
+![Hosts](screenshots/task2/Hosts.png)
+
+### 2. Лог Zabbix Agent
+![Agent Log](screenshots/task2/LogAgent2.png)
+
+### 3. Monitoring > Latest data (Последние данные)
+![Latest Data](screenshots/task2/LatestData.png)
+
+### Использованные команды
+
+```bash
+# Установка первого агента
+sudo apt install zabbix-agent -y
+
+# Настройка первого агента (порт 10050)
+sudo tee /etc/zabbix/zabbix_agentd.conf << 'EOF'
+Server=127.0.0.1
+ServerActive=127.0.0.1
+Hostname=Zabbix-Server
+ListenPort=10050
+LogFile=/var/log/zabbix/zabbix_agentd.log
+LogFileSize=0
+PidFile=/var/run/zabbix/zabbix_agentd.pid
+EOF
+
+# Настройка второго агента (порт 10051)
+sudo cp /usr/sbin/zabbix_agentd /usr/sbin/zabbix_agentd2
+sudo tee /etc/zabbix/zabbix_agentd2.conf << 'EOF'
+Server=127.0.0.1
+ServerActive=127.0.0.1
+Hostname=Ubuntu-Agent-2
+ListenPort=10051
+LogFile=/var/log/zabbix/zabbix_agentd2.log
+LogFileSize=0
+PidFile=/var/run/zabbix/zabbix_agentd2.pid
+EOF
+
+# Создание systemd сервиса для второго агента
+sudo tee /etc/systemd/system/zabbix-agent2.service << 'EOF'
+[Unit]
+Description=Zabbix Agent 2
+After=network.target
+[Service]
+Type=forking
+PIDFile=/var/run/zabbix/zabbix_agentd2.pid
+ExecStart=/usr/sbin/zabbix_agentd2 -c /etc/zabbix/zabbix_agentd2.conf
+ExecStop=/bin/kill $MAINPID
+Restart=on-failure
+[Install]
+WantedBy=multi-user.target
+EOF
+
+# Запуск агентов
+sudo systemctl daemon-reload
+sudo systemctl restart zabbix-agent
+sudo systemctl start zabbix-agent2
+sudo systemctl enable zabbix-agent zabbix-agent2
