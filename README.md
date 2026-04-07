@@ -12,7 +12,7 @@
 
 ### Использованные команды
 
-```bash
+bash
 # 1. Обновление системы и установка PostgreSQL
 sudo apt update && sudo apt upgrade -y
 sudo apt install postgresql postgresql-contrib -y
