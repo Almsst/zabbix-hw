@@ -36,7 +36,7 @@ sudo zcat /usr/share/zabbix/sql-scripts/postgresql/server.sql.gz | sudo -u zabbi
 sudo sed -i 's/# DBPassword=/DBPassword=ВАШ_ПАРОЛЬ/' /etc/zabbix/zabbix_server.conf
 
 # 7. Настройка Nginx (порт 8080)
-sudo tee /etc/nginx/conf.d/zabbix.conf << EOF
+sudo tee /etc/nginx/conf.d/zabbix.conf << 'EOF'
 server {
     listen 8080;
     listen [::]:8080;
@@ -62,17 +62,20 @@ sudo systemctl enable zabbix-server zabbix-agent nginx php8.3-fpm
 ## Задание 2. Установка Zabbix Agent на два хоста
 
 ### 1. Configuration > Hosts (Узлы сети)
-![Hosts](screenshots/task2/Hosts.png)
+<img width="1550" height="91" alt="image" src="https://github.com/user-attachments/assets/6f9c4eee-ee3c-4854-8185-2b33faa16d7f" />
+
 
 ### 2. Лог Zabbix Agent
-![Agent Log](screenshots/task2/LogAgent2.png)
+<img width="1297" height="465" alt="image" src="https://github.com/user-attachments/assets/50f5cc2d-7a6f-4953-a306-3a5bc95918f7" />
+
 
 ### 3. Monitoring > Latest data (Последние данные)
-![Latest Data](screenshots/task2/LatestData.png)
+<img width="728" height="731" alt="image" src="https://github.com/user-attachments/assets/7902b381-e610-4e2c-99dd-aab46343e212" />
+
 
 ### Использованные команды
 
-```bash
+bash
 # Установка первого агента
 sudo apt install zabbix-agent -y
 
