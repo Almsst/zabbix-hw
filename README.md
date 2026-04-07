@@ -7,8 +7,8 @@
 
 ### Скриншот авторизации в админке
 
-![Zabbix Dashboard](<img width="470" height="125" alt="image" src="https://github.com/user-attachments/assets/61aeb8fc-2e9a-4ee0-b441-78ab168e18c7" />
-)
+<img width="1548" height="758" alt="image" src="https://github.com/user-attachments/assets/096a8982-d3a4-4dba-8e84-f9c1c5029105" />
+
 
 ### Использованные команды
 
