@@ -12,7 +12,7 @@
 
 ### Использованные команды
 
-bash
+```bash
 # 1. Обновление системы и установка PostgreSQL
 sudo apt update && sudo apt upgrade -y
 sudo apt install postgresql postgresql-contrib -y
@@ -58,6 +58,7 @@ sudo sed -i 's/max_input_time = 60/max_input_time = 300/' /etc/php/8.3/fpm/php.i
 # 9. Запуск служб
 sudo systemctl restart php8.3-fpm nginx zabbix-server zabbix-agent
 sudo systemctl enable zabbix-server zabbix-agent nginx php8.3-fpm
+```
 
 ## Задание 2. Установка Zabbix Agent на два хоста
 
@@ -119,3 +120,4 @@ sudo systemctl daemon-reload
 sudo systemctl restart zabbix-agent
 sudo systemctl start zabbix-agent2
 sudo systemctl enable zabbix-agent zabbix-agent2
+```
