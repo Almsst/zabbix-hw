@@ -12,7 +12,7 @@
 
 ### Использованные команды
 
-bash
+```bash
 # 1. Обновление системы и установка PostgreSQL
 sudo apt update && sudo apt upgrade -y
 sudo apt install postgresql postgresql-contrib -y
@@ -72,7 +72,7 @@ sudo systemctl enable zabbix-server zabbix-agent nginx php8.3-fpm
 
 ### Использованные команды
 
-bash
+```bash
 # Установка первого агента
 sudo apt install zabbix-agent -y
 
