@@ -36,7 +36,7 @@ sudo zcat /usr/share/zabbix/sql-scripts/postgresql/server.sql.gz | sudo -u zabbi
 sudo sed -i 's/# DBPassword=/DBPassword=ВАШ_ПАРОЛЬ/' /etc/zabbix/zabbix_server.conf
 
 # 7. Настройка Nginx (порт 8080)
-sudo tee /etc/nginx/conf.d/zabbix.conf << 'EOF'
+sudo tee /etc/nginx/conf.d/zabbix.conf << EOF
 server {
     listen 8080;
     listen [::]:8080;
