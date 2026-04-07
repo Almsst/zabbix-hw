@@ -62,16 +62,13 @@ sudo systemctl enable zabbix-server zabbix-agent nginx php8.3-fpm
 ## Задание 2. Установка Zabbix Agent на два хоста
 
 ### 1. Configuration > Hosts (Узлы сети)
-<img width="1550" height="91" alt="image" src="https://github.com/user-attachments/assets/6f9c4eee-ee3c-4854-8185-2b33faa16d7f" />
-
+<img width="1546" height="92" alt="image" src="https://github.com/user-attachments/assets/2e310d78-aca0-4119-8656-5ce28241d2e9" />
 
 ### 2. Лог Zabbix Agent
 <img width="1297" height="465" alt="image" src="https://github.com/user-attachments/assets/50f5cc2d-7a6f-4953-a306-3a5bc95918f7" />
 
-
 ### 3. Monitoring > Latest data (Последние данные)
 <img width="728" height="731" alt="image" src="https://github.com/user-attachments/assets/7902b381-e610-4e2c-99dd-aab46343e212" />
-
 
 ### Использованные команды
 
